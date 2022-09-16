@@ -1,132 +1,129 @@
-body{ 
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
 }
 
 textarea {
-    width: 100%;
-    box-sizing: border-box;
-    resize: none;
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
 }
 
 .container {
-    margin: auto;
-    width: 100%;
+  margin: auto;
+  width: 100%;
 }
 
 .tab {
-    height: 90vh;
-    background-color: red;
-    margin: 3% 8%;
+  height: 90vh;
+  background-color: red;
+  margin: 3% 8%;
 }
 
 .tab-nav {
-    height: 10%;
-    background-color: chartreuse;
-    display: block;
+  height: 10%;
+  background-color: chartreuse;
+  display: block;
 }
 
 .tab-link {
-    float: left;
-    font-size: 40px;
-    width: 50%;
-    height: 100%;
-    display: block;
-    background-color: coral;
+  float: left;
+  font-size: 40px;
+  width: 50%;
+  height: 100%;
+  display: block;
+  background-color: coral;
 }
 
 .tab-content {
-    display: block;
-    height: 90%;
-    background-color: cornflowerblue;
+  display: block;
+  height: 90%;
+  background-color: cornflowerblue;
 }
 
 .tab-content-box {
-    float: left;
-    width: 50%;
-    height: 100%;
-
+  float: left;
+  width: 50%;
+  height: 100%;
 }
 
-.box-input, .box-output { 
-    border: 1px solid red;
-    border-radius: 4px;
+.box-input,
+.box-output {
+  border: 1px solid red;
+  border-radius: 4px;
 }
 
-.box-input{
-    padding: 20px;
-    margin-right: 0px;
-    height: calc(94% - 3px);
+.box-input {
+  padding: 20px;
+  margin-right: 0px;
+  height: calc(94% - 3px);
 }
 
 .box-output > * {
-    width: 100%;
+  width: 100%;
 }
 
-.box-output >  :nth-child(1){
-    height: 14%;
+.box-output > :nth-child(1) {
+  height: 14%;
 }
 
-.box-output >  :nth-child(2){
-    height: 14%;
+.box-output > :nth-child(2) {
+  height: 14%;
 }
 
 .box-output > :nth-child(3) {
-    height: 25%;
+  height: 25%;
 }
 
 .box-output > :nth-child(4) {
-    height: 16%;
+  height: 16%;
 }
 
 .box-output > :nth-child(5) {
-    height: 16%;
+  height: 16%;
 }
 
 .box-output > :nth-child(6) {
-    height: 16%;
+  height: 16%;
 }
 
-.box-output{
-    background-color: chartreuse;
-    height: calc(100% - 2px);
-    display: flex;
-    margin-right: 30px;
-    flex-wrap: wrap;
-    align-content:stretch;
+.box-output {
+  background-color: chartreuse;
+  height: calc(100% - 2px);
+  display: flex;
+  margin-right: 30px;
+  flex-wrap: wrap;
+  align-content: stretch;
 }
 
 .token-input {
-    height: 100%;
-    width: 500px;
+  height: 100%;
+  width: 500px;
 }
 
 .token-address {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 .text {
-    margin: 0;
-    font-size: 20px;
-    color: #000;
-    zoom: 1;
-    border-bottom: 1px solid red;
-    line-height: 1.5;
-    padding: 0 10px;
+  margin: 0;
+  font-size: 20px;
+  color: #000;
+  zoom: 1;
+  border-bottom: 1px solid red;
+  line-height: 1.5;
+  padding: 0 10px;
 }
 
-.decoded-text, .decoded-address, .decoded-blockhash, .decoded-body, .decoded-host, .decoded-signature, .decoded-ttl {
-    height: 100%;
+.decoded-text,
+.decoded-address,
+.decoded-blockhash,
+.decoded-extra-info,
+.decoded-host,
+.decoded-signature,
+.decoded-ttl {
+  height: 100%;
 }
-
-/* .code-mirror {
-    zoom: 1;
-    font-family: "Google Sans Text", Arial, Helvetica, sans-serif, "Fira Sans script=all rev=1";
-    outline: none;
-    height: 100%;
-    padding: 20px;
-    background-color: chartreuse;
-} */

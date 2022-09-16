@@ -9,7 +9,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "react-native-web": "^0.18.9",
     "react-scripts": "5.0.1",
+    "react-textarea-autosize": "^8.3.4",
     "web-vitals": "^2.1.4"
   },
   "browser": {
@@ -45,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react": "^18.0.20",
     "assert": "^2.0.0",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
