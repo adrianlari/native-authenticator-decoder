@@ -17,6 +17,8 @@ const DecoderImproved = () => {
   const [signature, setSignature] = useState("");
   const [ttl, setTtl] = useState("");
 
+  const [isDecodedSelected, setIsdecodedSelected] = useState(true);
+
   const tryDecode = async (token) => {
     console.log(token);
     const decoded = await decode(token);
@@ -49,19 +51,28 @@ const DecoderImproved = () => {
         <div className="jwt-playground">
           <div className="algorithm-code">
             <div className="tab-nav">
-              <div className="tab-link current">
-                <a href="#encoded-jwt">
+              <div
+                className={"tab-link " + (isDecodedSelected ? "current" : "")}
+              >
+                <a onClick={() => setIsdecodedSelected(true)}>
                   Encoded<small>paste a token here</small>
                 </a>
               </div>
-              <div className="tab-link">
-                <a href="#decoded-jwt">
-                  Decoded<small>edit the payload and secret</small>
+              <div
+                className={"tab-link " + (!isDecodedSelected ? "current" : "")}
+              >
+                <a onClick={() => setIsdecodedSelected(false)}>
+                  Decoded<small>decoded token</small>
                 </a>
               </div>
             </div>
             <div className="tab-content">
-              <div className="box-content current" id="encoded-jwt">
+              <div
+                className={
+                  "box-content " + (isDecodedSelected ? "current" : "")
+                }
+                id="encoded-jwt"
+              >
                 <div className="input js-input" style={{ height: "557px" }}>
                   <div className="CodeMirror cm-s-night CodeMirror-wrap CodeMirror-focused">
                     <div className="CodeMirror-scroll" tabIndex="-1">
@@ -96,7 +107,13 @@ const DecoderImproved = () => {
                 </div>
               </div>
 
-              <div className="box-content" id="decoded-jwt" heap-ignore="true">
+              <div
+                className={
+                  "box-content " + (!isDecodedSelected ? "current" : "")
+                }
+                id="decoded-jwt"
+                heap-ignore="true"
+              >
                 <div className="output">
                   <div
                     style={{ borderRight: "none", marginRight: "0px" }}
