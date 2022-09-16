@@ -1,12 +1,12 @@
-import Decoder from "./Decoder";
+import "./App.css";
+import DecoderImproved from "./components/DecoderImproved";
 
 const App = () => {
-
-
-
   return (
-    <Decoder />
+    <>
+      <DecoderImproved />
+    </>
   );
-}
+};
 
 export default App;
