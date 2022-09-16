@@ -2,7 +2,7 @@ import { useState } from "react";
 import RichTextArea from "../RichTextArea.jsx";
 import { TextTypes } from "../TextTypes.ts";
 import HeaderTextLine from "./HeaderTextLine.tsx";
-import functie_test from "../test.js";
+import decode from "../decoder.js";
 import "../jwt.css";
 import * as constants from "../constants.js";
 
@@ -19,7 +19,7 @@ const DecoderImproved = () => {
 
   const tryDecode = async (token) => {
     console.log(token);
-    const decoded = await functie_test(token);
+    const decoded = await decode(token);
 
     if (!decoded) {
       setAddress("");
