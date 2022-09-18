@@ -54,14 +54,14 @@ const DecoderImproved = () => {
               <div
                 className={"tab-link " + (isDecodedSelected ? "current" : "")}
               >
-                <a onClick={() => setIsdecodedSelected(true)}>
+                <a href="/#" onClick={() => setIsdecodedSelected(true)}>
                   Encoded<small>paste a token here</small>
                 </a>
               </div>
               <div
                 className={"tab-link " + (!isDecodedSelected ? "current" : "")}
               >
-                <a onClick={() => setIsdecodedSelected(false)}>
+                <a href="/#" onClick={() => setIsdecodedSelected(false)}>
                   Decoded<small>decoded token</small>
                 </a>
               </div>
