@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 import TextareaAutosize from "react-textarea-autosize";
-import TextTypes from "./TextTypes.ts";
-import * as constants from "./constants.js";
-import TextRun from "./components/TextRun";
+import TextTypes from "../TextTypes.ts";
+import * as constants from "../constants.js";
+import TextRun from "./TextRun";
 
 const RichTextArea = ({
   explanationText,
@@ -68,7 +68,13 @@ const RichTextArea = ({
         )}
 
         {textComp.map((comp) => {
-          return <TextRun text={comp.text} type={comp.type} />;
+          return (
+            <TextRun
+              key={comp.text + Math.random().toString()}
+              text={comp.text}
+              type={comp.type}
+            />
+          );
         })}
       </div>
 
@@ -84,7 +90,11 @@ const RichTextArea = ({
           fontFamily: constants.fontFamily,
           width: constants.width,
           top: "0px",
-          opacity: 0.1,
+          opacity: 1,
+          color: "transparent",
+          backgroundColor: "transparent",
+          caretColor: "red",
+          zIndex: 1000,
           position: "absolute",
           border: "none",
           overflow: "auto",
