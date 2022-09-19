@@ -1,6 +1,6 @@
 .CodeMirror {
   zoom: 1;
-  font-family: "Roboto Mono", Menlo;
+  /* font-family: "Roboto Mono", Menlo; */
   outline: none;
   height: 100%;
 }
@@ -30,7 +30,7 @@
   font-size: 20px;
   line-height: 30px;
 }
-
+/* 
 .jwt-playground .input .CodeMirror .cm-jwt-dot {
   color: #000;
 }
@@ -45,13 +45,13 @@
 
 .jwt-playground .input .CodeMirror .cm-jwt-signature {
   color: #00b9f1;
-}
+} */
 
 .jwt-playground .output .jwt-explained pre {
   font-size: 14px;
   line-height: 1.5;
 }
-
+/* 
 .jwt-playground .output .jwt-header .text-line a,
 .jwt-playground .output .jwt-header .CodeMirror * {
   color: #fb015b;
@@ -60,12 +60,12 @@
 .jwt-playground .output .jwt-payload .text-line a,
 .jwt-playground .output .jwt-payload .CodeMirror * {
   color: #d63aff;
-}
+} */
 
-.jwt-playground .output .jwt-signature .text-line a,
+/* .jwt-playground .output .jwt-signature .text-line a,
 .jwt-playground .output .jwt-signature pre {
   color: #00b9f1;
-}
+} */
 
 .flip-clock-wrapper {
   -webkit-user-select: none;
@@ -504,21 +504,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   overflow-y: hidden;
   overflow-x: scroll;
 }
-
-/* @font-face { */
-/* font-family: "budicon-font"; */
-/* src: url("https://cdn.auth0.com/fonts/budicons/fonts/budicon-font.eot");
-  src: url("https://cdn.auth0.com/fonts/budicons/fonts/budicon-font.eot?#iefix")
-      format("embedded-opentype"),
-    url("https://cdn.auth0.com/fonts/budicons/fonts/budicon-font.woff")
-      format("woff"),
-    url("https://cdn.auth0.com/fonts/budicons/fonts/budicon-font.ttf")
-      format("truetype"),
-    url("https://cdn.auth0.com/fonts/budicons/fonts/budicon-font.svg#budicon-font")
-      format("svg");
-  font-weight: normal;
-  font-style: normal; */
-/* } */
 
 [data-icon]:before {
   /* font-family: "budicon-font" !important; */
@@ -4848,163 +4833,6 @@ span.CodeMirror-selectedtext {
   }
 }
 
-@-o-keyframes hide {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes hide {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #f0f0f0;
-  -webkit-text-size-adjust: none;
-}
-
-.hljs,
-.hljs-subst,
-.hljs-tag .hljs-title,
-.nginx .hljs-title {
-  color: #000;
-}
-
-.hljs-string,
-.hljs-title,
-.hljs-constant,
-.hljs-parent,
-.hljs-tag .hljs-value,
-.hljs-rule .hljs-value,
-.hljs-preprocessor,
-.hljs-pragma,
-.hljs-name,
-.haml .hljs-symbol,
-.ruby .hljs-symbol,
-.ruby .hljs-symbol .hljs-string,
-.hljs-template_tag,
-.django .hljs-variable,
-.smalltalk .hljs-class,
-.hljs-addition,
-.hljs-flow,
-.hljs-stream,
-.bash .hljs-variable,
-.pf .hljs-variable,
-.apache .hljs-tag,
-.apache .hljs-cbracket,
-.tex .hljs-command,
-.tex .hljs-special,
-.erlang_repl .hljs-function_or_atom,
-.asciidoc .hljs-header,
-.markdown .hljs-header,
-.coffeescript .hljs-attribute,
-.tp .hljs-variable {
-  color: #800;
-}
-
-.smartquote,
-.hljs-comment,
-.hljs-annotation,
-.diff .hljs-header,
-.hljs-chunk,
-.asciidoc .hljs-blockquote,
-.markdown .hljs-blockquote {
-  color: #888;
-}
-
-.hljs-number,
-.hljs-date,
-.hljs-regexp,
-.hljs-literal,
-.hljs-hexcolor,
-.smalltalk .hljs-symbol,
-.smalltalk .hljs-char,
-.go .hljs-constant,
-.hljs-change,
-.lasso .hljs-variable,
-.makefile .hljs-variable,
-.asciidoc .hljs-bullet,
-.markdown .hljs-bullet,
-.asciidoc .hljs-link_url,
-.markdown .hljs-link_url {
-  color: #080;
-}
-
-.hljs-label,
-.ruby .hljs-string,
-.hljs-decorator,
-.hljs-filter .hljs-argument,
-.hljs-localvars,
-.hljs-array,
-.hljs-attr_selector,
-.hljs-important,
-.hljs-pseudo,
-.hljs-pi,
-.haml .hljs-bullet,
-.hljs-doctype,
-.hljs-deletion,
-.hljs-envvar,
-.hljs-shebang,
-.apache .hljs-sqbracket,
-.nginx .hljs-built_in,
-.tex .hljs-formula,
-.erlang_repl .hljs-reserved,
-.hljs-prompt,
-.asciidoc .hljs-link_label,
-.markdown .hljs-link_label,
-.vhdl .hljs-attribute,
-.clojure .hljs-attribute,
-.asciidoc .hljs-attribute,
-.lasso .hljs-attribute,
-.coffeescript .hljs-property,
-.hljs-phony {
-  color: #88f;
-}
-
-.hljs-keyword,
-.hljs-id,
-.hljs-title,
-.hljs-built_in,
-.css .hljs-tag,
-.hljs-doctag,
-.smalltalk .hljs-class,
-.hljs-winutils,
-.bash .hljs-variable,
-.pf .hljs-variable,
-.apache .hljs-tag,
-.hljs-type,
-.hljs-typename,
-.tex .hljs-command,
-.asciidoc .hljs-strong,
-.markdown .hljs-strong,
-.hljs-request,
-.hljs-status,
-.tp .hljs-data,
-.tp .hljs-io {
-  font-weight: bold;
-}
-
-.asciidoc .hljs-emphasis,
-.markdown .hljs-emphasis,
-.tp .hljs-units {
-  font-style: italic;
-}
-
-.nginx .hljs-built_in {
-  font-weight: normal;
-}
-
 .main-content pre {
   padding: 0;
   word-wrap: normal;
@@ -5020,171 +4848,6 @@ pre code.hljs {
   white-space: pre;
   padding: 15px;
   color: #fff;
-}
-
-pre code.hljs-line-numbers.hljs-line-numbers {
-  background-color: #2a3237;
-  border-right: 1px solid rgba(92, 102, 111, 0.1);
-  text-align: right;
-  color: rgba(255, 255, 255, 0.4);
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.hljs .subst,
-.hljs .lisp .title,
-.hljs .clojure .built_in,
-.hljs .nginx .title {
-  color: color_oil;
-}
-
-.hljs .string,
-.hljs .title,
-.hljs .constant,
-.hljs .parent,
-.hljs .tag .value,
-.hljs .rules .value,
-.hljs .rules .value .number,
-.hljs .preprocessor,
-.hljs .ruby .symbol,
-.hljs .ruby .symbol .string,
-.hljs .aggregate,
-.hljs .template_tag,
-.hljs .django .variable,
-.hljs .smalltalk .class,
-.hljs .addition,
-.hljs .flow,
-.hljs .stream,
-.hljs .bash .variable,
-.hljs .apache .tag,
-.hljs .apache .cbracket,
-.hljs .tex .command,
-.hljs .tex .special,
-.hljs .erlang_repl .function_or_atom,
-.hljs .markdown .header {
-  color: #00fbca;
-}
-
-.hljs .comment,
-.hljs .annotation,
-.hljs .template_comment,
-.hljs .diff .header,
-.hljs .chunk,
-.hljs .markdown .blockquote {
-  color: #899fab;
-}
-
-.hljs .number,
-.hljs .title,
-.hljs .date,
-.hljs .regexp,
-.hljs .literal,
-.hljs .smalltalk .symbol,
-.hljs .smalltalk .char,
-.hljs .go .constant,
-.hljs .change,
-.hljs .markdown .bullet,
-.hljs .markdown .link_url {
-  color: #42c7f4;
-}
-
-.hljs .label,
-.hljs .tag,
-.hljs .javadoc,
-.hljs .ruby .string,
-.hljs .decorator,
-.hljs .filter .argument,
-.hljs .localvars,
-.hljs .array,
-.hljs .attr_selector,
-.hljs .important,
-.hljs .pseudo,
-.hljs .pi,
-.hljs .doctype,
-.hljs .deletion,
-.hljs .envvar,
-.hljs .shebang,
-.hljs .apache .sqbracket,
-.hljs .nginx .built_in,
-.hljs .tex .formula,
-.hljs .erlang_repl .reserved,
-.hljs .prompt,
-.hljs .markdown .link_label,
-.hljs .vhdl .attribute,
-.hljs .clojure .attribute,
-.hljs .coffeescript .property {
-  color: #ffa0e7;
-}
-
-.hljs .id,
-.hljs .phpdoc,
-.hljs .built_in,
-.hljs .aggregate,
-.hljs .css .tag,
-.hljs .javadoctag,
-.hljs .yardoctag,
-.hljs .smalltalk .class,
-.hljs .winutils,
-.hljs .bash .variable,
-.hljs .apache .tag,
-.hljs .go .typename,
-.hljs .tex .command,
-.hljs .markdown .strong,
-.hljs .request,
-.hljs .status,
-.hljs .tag .title,
-.hljs .keyword {
-  color: #ff9a56;
-}
-
-.hljs .coffeescript .javascript,
-.hljs .javascript .xml,
-.hljs .tex .formula,
-.hljs .xml .javascript,
-.hljs .xml .vbscript,
-.hljs .xml .css,
-.hljs .xml .cdata {
-  opacity: 1;
-}
-
-@font-face {
-  font-family: "fakt-web";
-  src: url("https://cdn.auth0.com/styleguide/core/2.0.4/fonts/fakt/FaktPro-Blond.woff2")
-      format("woff2"),
-    url("https://cdn.auth0.com/styleguide/core/2.0.4/fonts/fakt/FaktPro-Blond.woff")
-      format("woff"),
-    url("https://cdn.auth0.com/styleguide/core/2.0.4/fonts/fakt/FaktPro-Blond.ttf")
-      format("truetype");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "fakt-web";
-  src: url("https://cdn.auth0.com/styleguide/core/2.0.4/fonts/fakt/FaktPro-Normal.woff2")
-      format("woff2"),
-    url("https://cdn.auth0.com/styleguide/core/2.0.4/fonts/fakt/FaktPro-Normal.woff")
-      format("woff"),
-    url("https://cdn.auth0.com/styleguide/core/2.0.4/fonts/fakt/FaktPro-Normal.ttf")
-      format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "fakt-web";
-  src: url("https://cdn.auth0.com/styleguide/core/2.0.4/fonts/fakt/FaktPro-Medium.woff2")
-      format("woff2"),
-    url("https://cdn.auth0.com/styleguide/core/2.0.4/fonts/fakt/FaktPro-Medium.woff")
-      format("woff"),
-    url("https://cdn.auth0.com/styleguide/core/2.0.4/fonts/fakt/FaktPro-Medium.ttf")
-      format("truetype");
-  font-weight: 500;
-  font-style: normal;
 }
 
 html {

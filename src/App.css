@@ -1,8 +1,8 @@
-.dot {
+#dot {
   color: #000;
 }
 
-.header {
+#header {
   color: #fb015b;
 }
 
@@ -10,6 +10,29 @@
   color: #d63aff;
 }
 
-.blockhash {
+#blockhash {
   color: #00b9f1;
+}
+
+textarea {
+  top: 0px;
+  opacity: 1;
+  color: transparent;
+  background-color: transparent;
+  position: absolute;
+  border: none;
+  overflow: auto;
+  padding: 0px;
+  box-shadow: none;
+  resize: none;
+  line-height: 150%;
+  z-index: 1000;
+}
+
+.custom-textarea {
+  margin-left: "0px";
+  margin-bottom: "0px";
+  border-right-width: "50px";
+  padding-right: "0px";
+  padding-bottom: "0px";
 }

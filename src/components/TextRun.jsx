@@ -1,14 +1,15 @@
 import { Text } from "react-native";
 import * as constants from "../constants.js";
 
-const TextRun = ({ type, text }) => {
-  // const { type, text } = props;
+const TextRun = ({ type, text, isExplanation }) => {
   return (
     <>
       <Text
         style={{
           // color: colors[index++ % colors.length],
-          fontSize: constants.inputFontSize,
+          fontSize: isExplanation
+            ? constants.explanationFontSize
+            : constants.inputFontSize,
           fontFamily: constants.fontFamily,
           width: constants.width,
           color: constants.colors[type],

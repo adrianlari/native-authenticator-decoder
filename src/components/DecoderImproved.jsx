@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RichTextArea from "./RichTextArea.jsx";
+import ReadOnlyRichTextArea from "./ReadOnlyRichTextArea.jsx";
 import { TextTypes } from "../TextTypes.ts";
 import HeaderTextLine from "./HeaderTextLine.tsx";
 import decode from "../decoder.js";
@@ -7,17 +8,30 @@ import "../jwt.css";
 import * as constants from "../constants.js";
 
 const DecoderImproved = () => {
-  // const [token, setToken] = useState("");
+  const [token, setToken] = useState(
+    "ZXJkMTNycm4zZndqZHM4cjUyNjBuNnEzcGQycWE2d3FrdWRyaGN6aDI2ZDk1N2MwZWR5emVybXNoZHMwazg.Wld4eWIyNWtMbU52YlEuYjNkMDc1NjUyOTNmZDU2ODRjOTdkMmI5NmViODYyZDEyNGZkNjk4Njc4ZjNmOTViMjUxNWVkMDcxNzhhMjdiNC44NjQwMC5lMzA.4b445f287663b868e269aa0532c9fd73acb37cfd45f46e33995777e68e5ecc15d97318d9af09c4102f9b40ecf347a75e2d2e81acbcc3c72ae32fcf659c2acd0e"
+  );
 
-  const [address, setAddress] = useState("");
-  const [body, setBody] = useState("");
-  const [blockHash, setBlockHash] = useState("");
+  const [address, setAddress] = useState(
+    "erd13rrn3fwjds8r5260n6q3pd2qa6wqkudrhczh26d957c0edyzermshds0k8"
+  );
+  const [body, setBody] = useState(
+    "ZWxyb25kLmNvbQ.b3d07565293fd5684c97d2b96eb862d124fd698678f3f95b2515ed07178a27b4.86400.e30"
+  );
+  const [blockHash, setBlockHash] = useState(
+    "b3d07565293fd5684c97d2b96eb862d124fd698678f3f95b2515ed07178a27b4"
+  );
   const [extraInfo, setExtraInfo] = useState("");
-  const [host, setHost] = useState("");
-  const [signature, setSignature] = useState("");
-  const [ttl, setTtl] = useState("");
+  const [host, setHost] = useState("elrond.com");
+  const [signature, setSignature] = useState(
+    "4b445f287663b868e269aa0532c9fd73acb37cfd45f46e33995777e68e5ecc15d97318d9af09c4102f9b40ecf347a75e2d2e81acbcc3c72ae32fcf659c2acd0e"
+  );
+  const [ttl, setTtl] = useState("86400");
+  const [isDecodedSelected, setIsDecodedSelected] = useState(true);
 
-  const [isDecodedSelected, setIsdecodedSelected] = useState(true);
+  useEffect(() => {
+    tryDecode(token);
+  }, [token]);
 
   const tryDecode = async (token) => {
     const decoded = await decode(token);
@@ -53,14 +67,14 @@ const DecoderImproved = () => {
               <div
                 className={"tab-link " + (isDecodedSelected ? "current" : "")}
               >
-                <a href="/#" onClick={() => setIsdecodedSelected(true)}>
+                <a href="/#" onClick={() => setIsDecodedSelected(true)}>
                   Encoded<small>paste a token here</small>
                 </a>
               </div>
               <div
                 className={"tab-link " + (!isDecodedSelected ? "current" : "")}
               >
-                <a href="/#" onClick={() => setIsdecodedSelected(false)}>
+                <a href="/#" onClick={() => setIsDecodedSelected(false)}>
                   Decoded<small>decoded token</small>
                 </a>
               </div>
@@ -75,16 +89,7 @@ const DecoderImproved = () => {
                 <div className="input js-input" style={{ height: "557px" }}>
                   <div className="CodeMirror cm-s-night CodeMirror-wrap CodeMirror-focused">
                     <div className="CodeMirror-scroll" tabIndex="-1">
-                      <div
-                        className="CodeMirror-sizer"
-                        style={{
-                          marginLeft: "0px",
-                          marginBottom: "0px",
-                          borderRightWidth: "50px",
-                          paddingRight: "0px",
-                          paddingBottom: "0px",
-                        }}
-                      >
+                      <div className="CodeMirror-sizer custom-textarea">
                         <div style={{ position: "relative", top: "0px" }}>
                           <div className="CodeMirror-lines">
                             <div
@@ -92,8 +97,9 @@ const DecoderImproved = () => {
                             >
                               <pre className="CodeMirror-line">
                                 <RichTextArea
+                                  displayedText={token}
                                   onChangeFromParent={(token) => {
-                                    tryDecode(token);
+                                    setToken(token);
                                   }}
                                 />
                               </pre>
@@ -110,7 +116,6 @@ const DecoderImproved = () => {
                 className={
                   "box-content " + (!isDecodedSelected ? "current" : "")
                 }
-                id="decoded-jwt"
                 heap-ignore="true"
               >
                 <div className="output">
@@ -125,16 +130,7 @@ const DecoderImproved = () => {
                     <div className="js-header">
                       <div className="CodeMirror cm-s-night CodeMirror-wrap CodeMirror-focused">
                         <div className="CodeMirror-scroll" tabIndex="-1">
-                          <div
-                            className="CodeMirror-sizer"
-                            style={{
-                              marginLeft: "0px",
-                              marginBottom: "0px",
-                              borderRightWidth: "50px",
-                              paddingRight: "0px",
-                              paddingBottom: "0px",
-                            }}
-                          >
+                          <div className="CodeMirror-sizer custom-textarea">
                             <div style={{ position: "relative", top: "0px" }}>
                               <div className="CodeMirror-lines">
                                 <div
@@ -144,13 +140,13 @@ const DecoderImproved = () => {
                                   }}
                                 >
                                   <pre
-                                    className="CodeMirror-line"
+                                    className="CodeMirror-line address"
                                     style={{
                                       fontSize: constants.explanationFontSize,
                                       fontFamily: constants.fontFamily,
                                     }}
                                   >
-                                    <RichTextArea
+                                    <ReadOnlyRichTextArea
                                       explanationText={address}
                                       explanationType={TextTypes.ADDRESS}
                                     />
@@ -168,16 +164,7 @@ const DecoderImproved = () => {
                     <div className="js-payload">
                       <div className="CodeMirror cm-s-default CodeMirror-wrap">
                         <div className="CodeMirror-scroll" tabIndex="-1">
-                          <div
-                            className="CodeMirror-sizer"
-                            style={{
-                              marginLeft: "0px",
-                              marginBottom: "0px",
-                              borderRightWidth: "50px",
-                              paddingRight: "0px",
-                              paddingBottom: "0px",
-                            }}
-                          >
+                          <div className="CodeMirror-sizer custom-textarea">
                             <div style={{ position: "relative", top: "0px" }}>
                               <div className="CodeMirror-lines">
                                 <div
@@ -194,7 +181,7 @@ const DecoderImproved = () => {
                                         fontFamily: constants.fontFamily,
                                       }}
                                     >
-                                      <RichTextArea
+                                      <ReadOnlyRichTextArea
                                         explanationText={body}
                                         explanationType={TextTypes.BODY}
                                       />
@@ -216,16 +203,7 @@ const DecoderImproved = () => {
                     <div className="js-payload">
                       <div className="CodeMirror cm-s-default CodeMirror-wrap">
                         <div className="CodeMirror-scroll" tabIndex="-1">
-                          <div
-                            className="CodeMirror-sizer"
-                            style={{
-                              marginLeft: "0px",
-                              marginBottom: "0px",
-                              borderRightWidth: "50px",
-                              paddingRight: "0px",
-                              paddingBottom: "0px",
-                            }}
-                          >
+                          <div className="CodeMirror-sizer custom-textarea">
                             <div style={{ position: "relative", top: "0px" }}>
                               <div className="CodeMirror-lines">
                                 <div
@@ -241,7 +219,7 @@ const DecoderImproved = () => {
                                       fontFamily: constants.fontFamily,
                                     }}
                                   >
-                                    <RichTextArea
+                                    <ReadOnlyRichTextArea
                                       explanationText={signature}
                                       explanationType={TextTypes.SIGNATURE}
                                     />
@@ -256,22 +234,13 @@ const DecoderImproved = () => {
                   </div>
                   <div className="jwt-explained jwt-payload">
                     <HeaderTextLine
-                      type={TextTypes.BLOCK_HASH}
+                      type={TextTypes.BLOCKHASH}
                       text="BlockHash"
                     />
                     <div className="js-payload">
                       <div className="CodeMirror cm-s-default CodeMirror-wrap">
                         <div className="CodeMirror-scroll" tabIndex="-1">
-                          <div
-                            className="CodeMirror-sizer"
-                            style={{
-                              marginLeft: "0px",
-                              marginBottom: "0px",
-                              borderRightWidth: "50px",
-                              paddingRight: "0px",
-                              paddingBottom: "0px",
-                            }}
-                          >
+                          <div className="CodeMirror-sizer custom-textarea">
                             <div style={{ position: "relative", top: "0px" }}>
                               <div className="CodeMirror-lines">
                                 <div
@@ -288,9 +257,9 @@ const DecoderImproved = () => {
                                         fontFamily: constants.fontFamily,
                                       }}
                                     >
-                                      <RichTextArea
+                                      <ReadOnlyRichTextArea
                                         explanationText={blockHash}
-                                        explanationType={TextTypes.BLOCK_HASH}
+                                        explanationType={TextTypes.BLOCKHASH}
                                       />
                                     </pre>
                                   </div>
@@ -307,16 +276,7 @@ const DecoderImproved = () => {
                     <div className="js-payload">
                       <div className="CodeMirror cm-s-default CodeMirror-wrap">
                         <div className="CodeMirror-scroll" tabIndex="-1">
-                          <div
-                            className="CodeMirror-sizer"
-                            style={{
-                              marginLeft: "0px",
-                              marginBottom: "0px",
-                              borderRightWidth: "50px",
-                              paddingRight: "0px",
-                              paddingBottom: "0px",
-                            }}
-                          >
+                          <div className="CodeMirror-sizer custom-textarea">
                             <div style={{ position: "relative", top: "0px" }}>
                               <div className="CodeMirror-lines">
                                 <div
@@ -333,7 +293,7 @@ const DecoderImproved = () => {
                                         fontFamily: constants.fontFamily,
                                       }}
                                     >
-                                      <RichTextArea
+                                      <ReadOnlyRichTextArea
                                         explanationText={host}
                                         explanationType={TextTypes.HOST}
                                       />
@@ -352,16 +312,7 @@ const DecoderImproved = () => {
                     <div className="js-payload">
                       <div className="CodeMirror cm-s-default CodeMirror-wrap">
                         <div className="CodeMirror-scroll" tabIndex="-1">
-                          <div
-                            className="CodeMirror-sizer"
-                            style={{
-                              marginLeft: "0px",
-                              marginBottom: "0px",
-                              borderRightWidth: "50px",
-                              paddingRight: "0px",
-                              paddingBottom: "0px",
-                            }}
-                          >
+                          <div className="CodeMirror-sizer custom-textarea">
                             <div style={{ position: "relative", top: "0px" }}>
                               <div className="CodeMirror-lines">
                                 <div
@@ -378,7 +329,7 @@ const DecoderImproved = () => {
                                         fontFamily: constants.fontFamily,
                                       }}
                                     >
-                                      <RichTextArea
+                                      <ReadOnlyRichTextArea
                                         explanationText={ttl}
                                         explanationType={TextTypes.TTL}
                                       />
@@ -394,22 +345,13 @@ const DecoderImproved = () => {
                   </div>
                   <div className="jwt-explained jwt-payload">
                     <HeaderTextLine
-                      type={TextTypes.EXTRA_INFO}
+                      type={TextTypes.EXTRAINFO}
                       text="Extra information"
                     />
                     <div className="js-payload">
                       <div className="CodeMirror cm-s-default CodeMirror-wrap">
                         <div className="CodeMirror-scroll" tabIndex="-1">
-                          <div
-                            className="CodeMirror-sizer"
-                            style={{
-                              marginLeft: "0px",
-                              marginBottom: "0px",
-                              borderRightWidth: "50px",
-                              paddingRight: "0px",
-                              paddingBottom: "0px",
-                            }}
-                          >
+                          <div className="CodeMirror-sizer custom-textarea">
                             <div style={{ position: "relative", top: "0px" }}>
                               <div className="CodeMirror-lines">
                                 <div
@@ -426,7 +368,7 @@ const DecoderImproved = () => {
                                         fontFamily: constants.fontFamily,
                                       }}
                                     >
-                                      <RichTextArea
+                                      <ReadOnlyRichTextArea
                                         explanationText={extraInfo}
                                         explanationType={TextTypes.EXTRA_INFO}
                                       />

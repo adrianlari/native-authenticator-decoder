@@ -1,60 +1,68 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import TextareaAutosize from "react-textarea-autosize";
 import TextTypes from "../TextTypes.ts";
 import * as constants from "../constants.js";
 import TextRun from "./TextRun";
 
-const RichTextArea = ({
-  explanationText,
-  explanationType,
-  onChangeFromParent,
-}) => {
+const RichTextArea = ({ onChangeFromParent, displayedText }) => {
   const [text, setText] = useState("");
-  const [textComp, setTextComp] = useState([]);
+  const [textComps, setTextComps] = useState([]);
 
-  let index = 1;
+  const DOT = ".";
+
+  let index = 0;
 
   const createObject = (text, type) => {
     return { text: text, type: type };
   };
 
-  const inputChange = (e) => {
-    let texty = e.target.value + "";
-    setText(texty);
-    onChangeFromParent(texty);
+  const hasDot = (text) => {
+    return text.indexOf(DOT) >= 0;
+  };
 
-    let comps = [];
+  const createTextComponents = (text) => {
+    let textComponents = [];
 
-    while (texty.indexOf(".") >= 0) {
-      let indexOfDot = texty.indexOf(".");
+    while (hasDot(text)) {
+      let indexOfDot = text.indexOf(DOT);
 
       if (indexOfDot === 0) {
-        comps.push(createObject(".", TextTypes.DOT));
-        texty = texty.slice(1);
+        textComponents.push(createObject(DOT, TextTypes.DOT));
+        text = text.slice(1);
         continue;
       }
 
-      let component = createObject(
-        texty.substring(0, indexOfDot),
+      let word = constants.sections[index++];
 
-        Object.values(TextTypes)[index++]
-      );
-      comps.push(component);
+      let component = createObject(text.substring(0, indexOfDot), word);
 
-      texty = texty.slice(indexOfDot);
+      textComponents.push(component);
+
+      text = text.slice(indexOfDot);
     }
 
-    comps.push(
-      createObject(
-        texty,
+    textComponents.push(createObject(text, constants.sections[index]));
 
-        Object.values(TextTypes)[index]
-      )
-    );
-
-    setTextComp(comps);
+    setTextComps(textComponents);
   };
+
+  const changeText = (text) => {
+    setText(text);
+    createTextComponents(text);
+  };
+
+  const handleInputChanged = (e) => {
+    let texty = e.target.value + "";
+    changeText(texty);
+    onChangeFromParent(texty);
+  };
+
+  useEffect(() => {
+    if (displayedText === text) return;
+
+    changeText(displayedText);
+  });
 
   return (
     <>
@@ -63,46 +71,27 @@ const RichTextArea = ({
           width: constants.width,
         }}
       >
-        {explanationText ?? (
-          <TextRun text={explanationText} type={explanationType} />
-        )}
-
-        {textComp.map((comp) => {
+        {textComps.map((component) => {
           return (
             <TextRun
-              key={comp.text + Math.random().toString()}
-              text={comp.text}
-              type={comp.type}
+              key={component.text + Math.random().toString()}
+              text={component.text}
+              type={component.type}
             />
           );
         })}
       </div>
 
       <TextareaAutosize
-        value={text ? text : explanationText}
-        spellCheck="false"
-        readOnly={!!explanationText}
+        spellCheck={false}
+        value={text}
         style={{
-          lineHeight: "150%",
-          fontSize: explanationText
-            ? constants.explanationFontSize
-            : constants.inputFontSize,
+          caretColor: "red",
+          fontSize: constants.inputFontSize,
           fontFamily: constants.fontFamily,
           width: constants.width,
-          top: "0px",
-          opacity: 1,
-          color: "transparent",
-          backgroundColor: "transparent",
-          caretColor: "red",
-          zIndex: 1000,
-          position: "absolute",
-          border: "none",
-          overflow: "auto",
-          padding: "0px",
-          boxShadow: "none",
-          resize: "none",
         }}
-        onChange={(e) => inputChange(e)}
+        onChange={(e) => handleInputChanged(e)}
       />
     </>
   );
